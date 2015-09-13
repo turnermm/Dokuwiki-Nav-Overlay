@@ -1,0 +1,38 @@
+#overlay { 
+  visibility:visible;
+  height:300px; 
+  width: 200px;
+  background-color:#fff;
+  position:absolute;
+  top:50px;
+  left:50px;
+  z-index:50;
+  overflow: auto; 
+  border: 1px solid black; 
+  font-size:11pt;
+  }
+
+#overlay div.close{
+ background-color: #eee;
+ font-size: 11pt;
+}
+#overlay div.close a { text-decoration: underline; padding-left: 4px; }
+#overlay ul.idx {
+    padding-left: 0;
+}
+#overlay ul.idx {
+    padding-right: 0;
+}
+#overlay ul.idx li {
+    list-style-image: url(../../images/bullet.png);
+}
+#overlay ul.idx li.open {
+    list-style-image: url(../../images/open.png);
+}
+#overlay ul.idx li.closed {
+    list-style-image: url(../../images/closed.png);
+}
+#overlay ul.idx li.closed {
+    list-style-image: url(../../images/closed-rtl.png);
+}
+
