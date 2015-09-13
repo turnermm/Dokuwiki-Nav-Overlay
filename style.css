@@ -1,3 +1,4 @@
+
 #overlay { 
   visibility:visible;
   height:300px; 
@@ -12,9 +13,11 @@
   font-size:11pt;
   }
 
+
 #overlay div.close{
  background-color: #eee;
  font-size: 11pt;
+ padding: 4px;
 }
 #overlay div.close a { text-decoration: underline; padding-left: 4px; }
 #overlay ul.idx {

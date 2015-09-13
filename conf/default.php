@@ -1,0 +1,10 @@
+<?php
+$conf['admin'] = '1';
+$conf['profile'] = '1';
+$conf['recent'] = '1';
+$conf['revisions'] = '1';
+$conf['backlink'] = '1';
+$conf['login'] = '1';
+$conf['index'] = '1';
+$conf['media'] = '1';
+$conf['register'] = '1';
