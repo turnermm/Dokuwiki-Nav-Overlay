@@ -1,6 +1,6 @@
 
 #overlay { 
-  visibility:visible;
+  display:block;
   height:300px; 
   width: 200px;
   background-color:#fff;
