@@ -8,3 +8,5 @@ $conf['login'] = '1';
 $conf['index'] = '1';
 $conf['media'] = '1';
 $conf['register'] = '1';
+$conf['edit'] = '1';
+$conf['always'] = '1';

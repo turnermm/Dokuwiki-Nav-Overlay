@@ -8,3 +8,5 @@ $meta['login'] = array('onoff');
 $meta['index'] = array('onoff');
 $meta['media'] = array('onoff');
 $meta['register'] = array('onoff');
+$meta['edit'] = array('onoff');
+$meta['always'] = array('onoff');
