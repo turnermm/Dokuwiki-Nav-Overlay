@@ -1,6 +1,6 @@
-if(JSINFO && JSINFO['overlay']) {  
+if(JSINFO && !JSINFO['overlay']) {  
     jQuery( document ).ready(function() {   
-       jQuery('#overlay').toggle();     
+      jQuery('#overlay').toggle();     
    });   
 }
 
