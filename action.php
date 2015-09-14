@@ -14,17 +14,23 @@
         
         function set_admin(&$event, $param) {
             global $JSINFO, $ACT;         
-         
-            $exclusions = array('admin','profile','recent','revisions','backlink','login','index','media','register');
-            $regex = "";
-            foreach($exclusions as $xcl) {
-                if($this->getConf($xcl)) {
-                 $regex .= "$xcl|" ;
-                 }
+            
+           
+            
+            if($this->getConf('always')) {
+                $JSINFO['overlay'] = 1;
             }
-          $regex = trim($regex, '|');  
-         //  $JSINFO['overlay'] = preg_match("/admin|profile|recent|revisions|backlink|login|index|media|register/",$ACT);      
-           $JSINFO['overlay'] = preg_match("/" . $regex ."/",$ACT);      
+            else {
+                $exclusions = array('admin','profile','recent','revisions','backlink','login','index','media','register','edit');
+                $regex = "";
+                foreach($exclusions as $xcl) {
+                    if($this->getConf($xcl)) {
+                     $regex .= "$xcl|" ;
+                     }
+                }
+              $regex = trim($regex, '|');            
+             $JSINFO['overlay'] = preg_match("/" . $regex ."/",$ACT);      
+           }
         }        
     }
 
