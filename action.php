@@ -38,7 +38,7 @@
         function print_overlay(&$event, $param) {        
         $page = trim($this->getConf('page'));
         if(!$page) return;
-        $insert =  p_wiki_xhtml('wiki:nav');  
+        $insert =  p_wiki_xhtml($page);  
         if(!$insert) return;
 $text = <<<TEXT
        <div id='overlay'><div  class = "close">
