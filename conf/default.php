@@ -10,3 +10,5 @@ $conf['media'] = '1';
 $conf['register'] = '1';
 $conf['edit'] = '1';
 $conf['always'] = '1';
+$conf['page'] = '';
+$conf['menutype'] ='user';

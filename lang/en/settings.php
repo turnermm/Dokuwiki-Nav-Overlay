@@ -10,3 +10,5 @@ $lang['media'] = 'Initially hide overlay when opening media window.';
 $lang['register'] = 'Initially hide overlay for new registrations.';
 $lang['edit'] = 'Initially hide overlay during edits.';
 $lang['always'] = 'Always initially hide the overlay.';
+$lang['page'] = 'Page on which navigation or overlay content is to be found [namespace:pagename].';
+$lang['menutype'] ="Where to place overlay toggle (see overlay plugin page).";

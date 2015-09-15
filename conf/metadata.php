@@ -10,3 +10,5 @@ $meta['media'] = array('onoff');
 $meta['register'] = array('onoff');
 $meta['edit'] = array('onoff');
 $meta['always'] = array('onoff');
+$meta['page'] = array('string');
+$meta['menutype']  = array('multichoice','_choices' => array('user','site','page'));

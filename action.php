@@ -9,9 +9,11 @@
     class action_plugin_overlay extends DokuWiki_Action_Plugin {
     
         function register(Doku_Event_Handler $controller) {             
-            $controller->register_hook('DOKUWIKI_STARTED', 'AFTER',  $this, 'set_admin');
-            $controller->register_hook('TPL_ACT_RENDER', 'AFTER',  $this, 'print_overlay', array('after'));
-           $controller->register_hook('TEMPLATE_PAGETOOLS_DISPLAY', 'BEFORE', $this, 'action_link');    
+           $controller->register_hook('DOKUWIKI_STARTED', 'AFTER',  $this, 'set_admin');
+           $controller->register_hook('TPL_ACT_RENDER', 'AFTER',  $this, 'print_overlay', array('after'));
+           $controller->register_hook('TEMPLATE_PAGETOOLS_DISPLAY', 'BEFORE', $this, 'action_link', array('page'));    
+           $controller->register_hook('TEMPLATE_SITETOOLS_DISPLAY', 'BEFORE', $this, 'action_link', array('site'));    
+           $controller->register_hook('TEMPLATE_USERTOOLS_DISPLAY', 'BEFORE', $this, 'action_link', array('user'));    
         }
         
         function set_admin(&$event, $param) {
@@ -46,6 +48,8 @@ TEXT;
         
    function action_link(&$event, $param)
     {
+        $type = $this->getConf('menutype');
+        if($type !=$param[0]) return;
         $event->data['items']['overlay'] = '<li><a href="javascript:jQuery(\'#overlay\').toggle();void(0);"  rel="nofollow"   title="Index">Index</a></li>';
 
     }        
