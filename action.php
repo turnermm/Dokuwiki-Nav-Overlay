@@ -36,22 +36,26 @@
         }
 
         function print_overlay(&$event, $param) {        
-         $insert =  p_wiki_xhtml('wiki:nav');  
+        $page = trim($this->getConf('page'));
+        if(!$page) return;
+        $insert =  p_wiki_xhtml('wiki:nav');  
+        if(!$insert) return;
 $text = <<<TEXT
        <div id='overlay'><div  class = "close">
         <a href="javascript:jQuery('#overlay').toggle();void(0);"  rel="nofollow" title="close">Close</a>
         </div> $insert</div>
 TEXT;
           echo $text;
-      //   echo '<li><a href="javascript:jQuery(\'#overlay\').toggle();void(0);"  rel="nofollow"   title="Index">Index</a></li>';
+     
         }
         
    function action_link(&$event, $param)
     {
         $type = $this->getConf('menutype');
         if($type !=$param[0]) return;
-        $event->data['items']['overlay'] = '<li><a href="javascript:jQuery(\'#overlay\').toggle();void(0);"  rel="nofollow"   title="Index">Index</a></li>';
+        $name = $this->getLang('toggle_name');
+        $event->data['items']['overlay'] = '<li><a href="javascript:jQuery(\'#overlay\').toggle();void(0);"  rel="nofollow"   title="' .$name. '">'. $name.'</a></li>';
 
     }        
-    }
+}
 
