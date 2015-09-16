@@ -16,7 +16,7 @@
 
 #overlay div.close{
  background-color: #eee;
- font-size: 11pt;
+ font-size: 10pt;
  padding: 4px;
 }
 #overlay div.close a { text-decoration: underline; padding-left: 4px; }
@@ -39,3 +39,4 @@
     list-style-image: url(../../images/closed-rtl.png);
 }
 
+#overlay ul.idx li a.wikilink2 { color: __existing__ ; }

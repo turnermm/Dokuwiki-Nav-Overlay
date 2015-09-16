@@ -40,9 +40,10 @@
         if(!$page) return;
         $insert =  p_wiki_xhtml($page);  
         if(!$insert) return;
+        $close = trim($this->getLang('close'));
 $text = <<<TEXT
        <div id='overlay'><div  class = "close">
-        <a href="javascript:jQuery('#overlay').toggle();void(0);"  rel="nofollow" title="close">Close</a>
+        <a href="javascript:jQuery('#overlay').toggle();void(0);"  rel="nofollow" title="$close">$close</a>
         </div> $insert</div>
 TEXT;
           echo $text;
