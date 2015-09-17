@@ -36,7 +36,24 @@
         }
 
         function print_overlay(&$event, $param) {        
-        $page = trim($this->getConf('page'));
+            global $ID;
+            $page = "";
+            
+           $namespaces = $this->getConf('nsoverlays');
+           //msg( $namespaces);
+           $alternates = explode(',',$namespaces);
+            
+            $ns = getNS($ID);
+            foreach($alternates as $nmsp) {
+                if($ns ==  trim($nmsp,': ')) {
+                  $wikiFile = wikiFN("$ns:overlay"); 
+                  if(file_exists($wikiFile)) {
+                      $page = "$ns:overlay";
+                  }
+                }
+          }
+         //   msg("$ns  ");
+            if(!$page) $page = trim($this->getConf('page'));          
         if(!$page) return;
         $insert =  p_wiki_xhtml($page);  
         if(!$insert) return;

@@ -12,3 +12,5 @@ $conf['edit'] = '1';
 $conf['always'] = '1';
 $conf['page'] = '';
 $conf['menutype'] ='user';
+$conf['nsoverlays'] ='';
+

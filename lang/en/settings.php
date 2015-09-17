@@ -12,3 +12,5 @@ $lang['edit'] = 'Initially hide overlay during edits.';
 $lang['always'] = 'Always initially hide the overlay.';
 $lang['page'] = 'Dokuwiki page on which navigation or overlay content is to be found [namespace:pagename].';
 $lang['menutype'] ="Where to place overlay toggle (see overlay plugin page).";
+$lang['nsoverlays'] = "Comma separated list of namespaces where alternate content will be found for display in those namespaces. The pages with this alternate content "
+  . " must be named 'overlay' and if found  will be used instead of the  main overlay page.";
