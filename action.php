@@ -39,8 +39,7 @@
             global $ID;
             $page = "";
             
-           $namespaces = $this->getConf('nsoverlays');
-           //msg( $namespaces);
+           $namespaces = $this->getConf('nsoverlays');  // check for alternate overlay pages         
            $alternates = explode(',',$namespaces);
             
             $ns = getNS($ID);
@@ -48,11 +47,12 @@
                 if($ns ==  trim($nmsp,': ')) {
                   $wikiFile = wikiFN("$ns:overlay"); 
                   if(file_exists($wikiFile)) {
-                      $page = "$ns:overlay";
+                      $page = "$ns:overlay";    // if an alternate exists put it in $page
+                      break;
                   }
                 }
           }
-         //   msg("$ns  ");
+      
             if(!$page) $page = trim($this->getConf('page'));          
         if(!$page) return;
         $insert =  p_wiki_xhtml($page);  
