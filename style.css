@@ -21,7 +21,12 @@
  text-align: right;
  padding-right: 6px;
 }
-#overlay div.close a { text-decoration: underline; padding-left: 4px; }
+#overlay div.close a { 
+   padding-left: 4px; 
+ }
+#overlay div.close span.oltools-left { float: left; padding-left: 5px;}  /*tool left*/
+#overlay div.close span.oltools-right { float: left; padding-left: 14px;}  /*tool middle*/
+
 #overlay ul.idx {
     padding-left: 0;
 }

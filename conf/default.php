@@ -13,4 +13,7 @@ $conf['always'] = '1';
 $conf['page'] = '';
 $conf['menutype'] ='user';
 $conf['nsoverlays'] ='';
+$conf['tools'] = 'login,admin';
+$conf['width'] = '';
+$conf['height'] = '';
 

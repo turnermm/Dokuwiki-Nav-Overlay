@@ -39,6 +39,14 @@
             global $ID;
             $page = "";
             
+           $tools = $this->getConf('tools');
+           if(!empty($tools)) {
+               $choices = explode(',',$tools);
+               $action = tpl_action($choices[0], true, '', 1, '<span class = "oltools-left">', '</span>', ''); 
+               for($i = 1; $i<count($choices); $i++)
+                   $action .= tpl_action($choices[$i], true, '', 1, '<span class = "oltools-right">', '</span>', ''); 
+               }    
+            
            $namespaces = $this->getConf('nsoverlays');  // check for alternate overlay pages         
            $alternates = explode(',',$namespaces);
             
@@ -59,7 +67,7 @@
         if(!$insert) return;
         $close = trim($this->getLang('close'));
 $text = <<<TEXT
-       <div id='overlay'><div  class = "close">
+       <div id='overlay'><div  class = "close">$action
         <a href="javascript:jQuery('#overlay').toggle();void(0);"  rel="nofollow" title="$close">$close</a>
         </div> $insert</div>
 TEXT;
