@@ -33,6 +33,16 @@
               $regex = trim($regex, '|');            
              $JSINFO['overlay'] = preg_match("/" . $regex ."/",$ACT);      
            }
+           $height = preg_replace('/[^0-9]+/', '', $this->getConf('height'));
+           $width = preg_replace('/[^0-9]+/', '', $this->getConf('width'));
+         
+           if($height) {          
+               $JSINFO['ol_height'] = $height . "px";
+           }
+           if($width) {               
+               $JSINFO['ol_width'] = $width ."px";
+           }
+          
         }
 
         function print_overlay(&$event, $param) {        
