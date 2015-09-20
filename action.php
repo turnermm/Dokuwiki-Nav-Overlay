@@ -85,6 +85,12 @@ TEXT;
      
         }
         
+     /**
+      *  The three types of action links all use the same html
+      *  They are treated differently according to which event is calling this callback
+      *  $param holds the link type for the event to be processed; it has to match the menu type
+      *  configured for the plugin  (page, site, user)
+     */     
    function action_link(&$event, $param)
     {
         $type = $this->getConf('menutype');
