@@ -5,8 +5,8 @@
   width: 225px;
   background-color:#fff;
   position:absolute;
-  top:50px;
-  left:50px;
+  top: 0px;
+  left:0px;
   z-index:50;
   overflow: auto; 
   border: 1px solid black; 
