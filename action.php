@@ -1,6 +1,7 @@
 <?php
     /**
-          * @author   Myron Turner <turnermm02@shaw.ca>
+      * @author   Myron Turner <turnermm02@shaw.ca>
+      * developed with suggestions from torpedo <dgtorpedo@gmail.com>
      */
      
     if(!defined('DOKU_INC')) die();
