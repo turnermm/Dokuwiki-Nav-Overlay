@@ -64,7 +64,7 @@
             foreach($alternates as $nmsp) {
                 if($ns ==  trim($nmsp,': ')) {
                   $wikiFile = wikiFN("$ns:overlay"); 
-                  if(file_exists($wikiFile)) {
+                  if(file_exists($wikiFile) && auth_quickaclcheck("$ns:overlay") >= AUTH_READ) {  // check ACL for overlay page
                       $page = "$ns:overlay";    // if an alternate exists put it in $page
                       break;
                   }
@@ -77,7 +77,7 @@
                     $nmsp = trim($nmsp,'* ');
                     if(preg_match("#^$nmsp#",$ns)) {
                          $wikiFile = wikiFN("$nmsp:overlay");
-                         if(file_exists($wikiFile)) {
+                         if(file_exists($wikiFile) && auth_quickaclcheck("$nmsp:overlay") >= AUTH_READ)  {  // check ACL for overlay page
                              $page = "$nmsp:overlay";    // if a parent namespace alternate exists put it in $page
                              break;
                         }                         
@@ -108,6 +108,8 @@ TEXT;
      */     
    function action_link(&$event, $param)
     {
+       global $ID;
+        if (auth_quickaclcheck($ID) < AUTH_READ) return;     //no access to page, suppress index link
         $type = $this->getConf('menutype');
         if($type !=$param[0]) return;
         $name = $this->getLang('toggle_name');
