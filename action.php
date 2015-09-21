@@ -69,9 +69,24 @@
                       break;
                   }
                 }
+            }
+
+            if(!$page) {
+              foreach($alternates as $nmsp) {
+                  if(strrpos($nmsp,'*')) {
+                    $nmsp = trim($nmsp,'* ');
+                    if(preg_match("#^$nmsp#",$ns)) {
+                         $wikiFile = wikiFN("$nmsp:overlay");
+                         if(file_exists($wikiFile)) {
+                             $page = "$nmsp:overlay";    // if a parent namespace alternate exists put it in $page
+                             break;
+                        }                         
+                    }
+                }
           }
-      
-            if(!$page) $page = trim($this->getConf('page'));          
+        }  
+            
+        if(!$page) $page = trim($this->getConf('page'));          
         if(!$page) return;
         $insert =  p_wiki_xhtml($page);  
         if(!$insert) return;
