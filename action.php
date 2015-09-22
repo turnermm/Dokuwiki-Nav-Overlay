@@ -18,9 +18,13 @@
         }
         
         function set_admin(&$event, $param) {
-            global $JSINFO, $ACT;         
+            global $JSINFO, $ACT,$INPUT;         
             
-            if($this->getConf('always')) {
+            if(is_array($ACT)) {
+                $ACT = $INPUT->str('do');                              
+            }
+                         
+            if($this->getConf('always')  || empty($ACT)) {     
                 $JSINFO['overlay'] = 1;
             }
             else {
@@ -31,7 +35,7 @@
                      $regex .= "$xcl|" ;
                      }
                 }
-              $regex = trim($regex, '|');            
+             $regex = trim($regex, '|');            
              $JSINFO['overlay'] = preg_match("/" . $regex ."/",$ACT);      
            }
            $height = preg_replace('/[^0-9]+/', '', $this->getConf('height'));
