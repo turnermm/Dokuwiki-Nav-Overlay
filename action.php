@@ -18,13 +18,13 @@
         }
         
         function set_admin(&$event, $param) {
-            global $JSINFO, $ACT,$INPUT;         
+            global $JSINFO, $ACT;         
             
             if(is_array($ACT)) {
-                $ACT = $INPUT->str('do');                              
+                 $ACT = act_clean($ACT);
             }
                          
-            if($this->getConf('always')  || empty($ACT)) {     
+            if($this->getConf('always')){   
                 $JSINFO['overlay'] = 1;
             }
             else {
