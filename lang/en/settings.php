@@ -17,3 +17,4 @@ $lang['nsoverlays'] = "Comma separated list of namespaces where alternate conten
   . " a child has its own overlay page.";
 $lang['width'] ="Width in pixels of the overlay window.  This can also be changed in overlay/style.css. Its initial setting is 225px.";
 $lang['height'] ="Height in pixels of the overlay window. This  can also be changed in overlay/style.css. Its initial setting is 325px.";
+$lang['tools'] = 'Which action links to insert in top menu bar of overlay panel. A comma separated list of unspecified links can be inserted in the textbox. The width of the panel may have to be increased in size for some sets of link names.';
