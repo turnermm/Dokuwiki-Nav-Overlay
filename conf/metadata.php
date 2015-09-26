@@ -16,3 +16,5 @@ $meta['nsoverlays'] = array('string');
 $meta['tools']  = array('multicheckbox','_choices' => array('login','admin','revisions','profile'));
 $meta['width'] = array('string');
 $meta['height'] = array('string');
+$meta['actionlinktype']  = array('multichoice','_choices' => array('button','link','dokuwiki'));
+

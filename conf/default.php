@@ -16,4 +16,4 @@ $conf['nsoverlays'] ='';
 $conf['tools'] = 'login,admin';
 $conf['width'] = '';
 $conf['height'] = '';
-
+$conf['actionlinktype'] = 'dokuwiki';
