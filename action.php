@@ -15,6 +15,7 @@
            $controller->register_hook('TEMPLATE_PAGETOOLS_DISPLAY', 'BEFORE', $this, 'action_link', array('page'));    
            $controller->register_hook('TEMPLATE_SITETOOLS_DISPLAY', 'BEFORE', $this, 'action_link', array('site'));    
            $controller->register_hook('TEMPLATE_USERTOOLS_DISPLAY', 'BEFORE', $this, 'action_link', array('user'));    
+            $controller->register_hook('TEMPLATE_OVLTOOLS_DISPLAY', 'BEFORE', $this, 'overlay_tools', array('user'));
         }
         
         function set_admin(&$event, $param) {
@@ -121,5 +122,16 @@ TEXT;
         $event->data['items']['overlay'] = '<li><a href="javascript:jQuery(\'#overlay\').toggle();void(0);"  rel="nofollow"   title="' .$name. '">'. $name.'</a></li>';
 
     }        
+  function overlay_tools(&$event, $param) {
+    
+    $name = $this->getLang('toggle_name');
+    $type = $this->getConf('toggletype');
+     if($type == 'link') {
+          $event->data['items']['overlay'] = '<a href="javascript:jQuery(\'#overlay\').toggle();void(0);"  class="overlaytools" rel="nofollow"   title="' .$name. '">'. $name.'</a>';
+        }
+        elseif($type == 'button') {
+          $event->data['items']['overlay'] = '<button class="overlaytools" onclick="jQuery(\'#overlay\').toggle();void(0);">Index</button>';
+        }  
+   }  
 }
 
