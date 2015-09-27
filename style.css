@@ -2,7 +2,7 @@
 #overlay { 
   display:none;
   height:325px; 
-  width: 225px;
+  width: 275px;
   background-color:#fff;
   position: fixed;
   top: 0px;
@@ -47,3 +47,7 @@
 }
 
 #overlay ul.idx li a.wikilink2 { color: __existing__ ; }
+
+/* mark  settings here as !important.  For instance,  color: green !important;   */
+button.overlaytools {}
+a.overlaytools {}
