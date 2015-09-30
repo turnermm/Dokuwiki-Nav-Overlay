@@ -37,6 +37,7 @@
                      }
                 }
              $regex = trim($regex, '|');            
+             $regex .= '|preview';             
              $JSINFO['overlay'] = preg_match("/" . $regex ."/",$ACT);      
            }
            $height = preg_replace('/[^0-9]+/', '', $this->getConf('height'));
