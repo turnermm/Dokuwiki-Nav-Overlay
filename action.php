@@ -49,7 +49,16 @@
            if($width) {               
                $JSINFO['ol_width'] = $width ."px";
            }
-          
+         $cookie_name =  'OverlayUserposition';
+           if(isset($_COOKIE[$cookie_name])) {
+                list($left,$top) = explode('#',COOKIE[$cookie_name]);
+                $JSINFO['ol_top'] = intval($top);
+                $JSINFO['ol_left'] = intval($left);
+           } 
+           else {
+               $JSINFO['ol_left'] = 0;
+               $JSINFO['ol_top'] = 0;
+           }
         }
 
         function print_overlay(&$event, $param) {        

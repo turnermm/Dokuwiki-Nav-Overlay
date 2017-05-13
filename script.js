@@ -33,9 +33,40 @@ jQuery( document ).ready(function() {
 });
 });
 
+jQuery(window).load(function() {       
+            var pos  = overlay_getCookie('OverlayUserposition') ;
+            var pos_ar, ptop, pleft;
+            
+            if(pos) {
+                pos_ar = pos.split('#');
+                pleft = parseInt(pos_ar[0]);
+                ptop = parseInt(pos_ar[0]);                
+            }
+            else {
+                pleft = JSINFO['ol_left'];
+                ptop = JSINFO['ol_top']
+            }
+            jQuery("#overlay" ).css({top: JSINFO['ol_top'], left: JSINFO['ol_left'], position:'absolute'});     
+});
+
 function setOverlayCookie(cname, cvalue) {
     var d = new Date();  
     d.setTime(d.getTime() + (10*60*1000)); //10 minutes
     var expires = "expires="+ d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";    
 }
+
+ function overlay_getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+        }
+    }
+    return "";
+ }
