@@ -8,14 +8,14 @@ jQuery( document ).ready(function() {
   var theUserposition= {'x':0,'y':0};        
     jQuery( "#overlay" ).draggable({
         drag: function(event,ui){
-             var offset = jQuery(this).offset();
-            var xPos = offset.left;
-            var yPos = offset.top;
+        var position = jQuery(this).position();
+        theUserposition.y = position.top;
+         theUserposition.x =position.left;
         }, 
         stop: function(){
-            var finalOffset = jQuery(this).offset();
-            theUserposition.x = finalOffset.left;
-            theUserposition.y = finalOffset.top;          
+        var position = jQuery(this).position();
+        theUserposition.y = position.top;
+         theUserposition.x =position.left;
         },
     });
     if(JSINFO ) {
@@ -33,8 +33,10 @@ jQuery( document ).ready(function() {
 });
 });
 
-jQuery(window).load(function() {       
-    setTimeout(ovl_setPosition,500)
+jQuery(window).load(function() {  
+    jQuery('#overlay').toggle(); 
+    ovl_setPosition();
+    jQuery('#overlay').toggle();     
 });
 function  ovl_setPosition() {       
             var pos  = overlay_getCookie('OverlayUserposition') ;
@@ -50,13 +52,14 @@ function  ovl_setPosition() {
                 pleft = JSINFO['ol_left'];
                 ptop = JSINFO['ol_top']
             }
-           
+
             jQuery("#overlay" ).css({top: ptop, left: pleft, position:'absolute'});     
+           
 };
 
 function setOverlayCookie(cname, cvalue) {
     var d = new Date();  
-    d.setTime(d.getTime() + (10*60*1000)); //10 minutes
+    d.setTime(d.getTime() + (60*60*1000)); //60 minutes
     var expires = "expires="+ d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";    
 }
@@ -75,3 +78,4 @@ function setOverlayCookie(cname, cvalue) {
     }
     return "";
  }
+ 
