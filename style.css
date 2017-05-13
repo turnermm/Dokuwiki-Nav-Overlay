@@ -2,9 +2,9 @@
 #overlay { 
   display:none;
   height:325px; 
-  width: 250px;
+  width: 300px;
   background-color:#fff;
-  position: fixed;
+  position:absolute;
   top: 0px;
   left:0px;
   z-index:50;
@@ -15,12 +15,22 @@
   }
 
 
+#overlay div.inside,
 #overlay div.close{
  background-color: #eee;
  font-size: 10pt;
  text-align: right;
  padding-right: 6px;
 }
+
+#overlay div.inside {
+    padding-right: 0px;
+    width: 95%;
+    margin:  auto;
+    position: absolute;
+    bottom: 0;
+}  
+
 #overlay div.close a { 
    padding-left: 4px; 
  }

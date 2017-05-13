@@ -3,9 +3,8 @@ if(JSINFO && !JSINFO['overlay']) {
       jQuery('#overlay').toggle();     
    });   
 }
-
+ var theUserposition= {'x':0,'y':0};  
 jQuery( document ).ready(function() {   
-  var theUserposition= {'x':0,'y':0};        
     jQuery( "#overlay" ).draggable({
         drag: function(event,ui){
         var position = jQuery(this).position();
@@ -26,7 +25,14 @@ jQuery( document ).ready(function() {
            jQuery( "#overlay" ).css('height',JSINFO['ol_height']);            
         }
    }
- 
+ jQuery( "a.ovl_fix_toggle" ).on('click', function() {
+    var which = jQuery("#overlay").css('position');    
+    if(which == 'fixed') {
+        which = "absolute";    }
+    else which = 'fixed';
+       jQuery("#overlay" ).css({top:  theUserposition.y, left:  theUserposition.x, position:which});     
+  // jQuery("#overlay").css('position',which);    
+ });
  jQuery(window).on('beforeunload', function(){ 
     var pos = (theUserposition.x).toString() + '#' + (theUserposition.y).toString();
     setOverlayCookie('OverlayUserposition', pos) ;
@@ -35,22 +41,17 @@ jQuery( document ).ready(function() {
 
 jQuery(window).load(function() {  
             var pos  = overlay_getCookie('OverlayUserposition') ;
-            var pos_ar, ptop, pleft;
-            
+            var  pos_ar, ptop=0, pleft=0, ptype='abolute';         
             if(pos) {
                 pos_ar = pos.split('#');
                 pleft = parseInt(pos_ar[0]);
                 ptop = parseInt(pos_ar[1]);                
             }
-            else if(JSINFO['ol_left']) {                 
+             if(JSINFO['ol_left']) {                 
                 pleft = JSINFO['ol_left'];
-                ptop = JSINFO['ol_top']
+                ptop = JSINFO['ol_top'] ;               
             }
-            else {
-                pleft = 0; ptop = 0;
-            }
-
-            jQuery("#overlay" ).css({top: ptop, left: pleft, position:'fixed'});     
+            jQuery("#overlay" ).css({top: ptop, left: pleft, position:ptype});     
            
 });
 

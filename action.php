@@ -107,10 +107,13 @@
         $insert =  p_wiki_xhtml($page);  
         if(!$insert) return;
         $close = trim($this->getLang('close'));
+        $detach = trim($this->getLang('detach'));
+        $action .=' <a href="javascript:void(0);"  class="ovl_fix_toggle">' . $detach. '</a>';
 $text = <<<TEXT
        <div id='overlay'><div  class = "close">$action
         <a href="javascript:jQuery('#overlay').toggle();void(0);"  rel="nofollow" title="$close">$close</a>
         </div> $insert</div>
+        
 TEXT;
           echo $text;
      
