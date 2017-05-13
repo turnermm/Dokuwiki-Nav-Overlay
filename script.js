@@ -34,13 +34,7 @@ jQuery( document ).ready(function() {
 });
 
 jQuery(window).load(function() {  
-    jQuery('#overlay').toggle(); 
-    ovl_setPosition();
-    jQuery('#overlay').toggle();     
-});
-function  ovl_setPosition() {       
             var pos  = overlay_getCookie('OverlayUserposition') ;
-           // if(!pos) return;
             var pos_ar, ptop, pleft;
             
             if(pos) {
@@ -48,14 +42,17 @@ function  ovl_setPosition() {
                 pleft = parseInt(pos_ar[0]);
                 ptop = parseInt(pos_ar[1]);                
             }
-            else {
+            else if(JSINFO['ol_left']) {                 
                 pleft = JSINFO['ol_left'];
                 ptop = JSINFO['ol_top']
             }
+            else {
+                pleft = 0; ptop = 0;
+            }
 
-            jQuery("#overlay" ).css({top: ptop, left: pleft, position:'absolute'});     
+            jQuery("#overlay" ).css({top: ptop, left: pleft, position:'fixed'});     
            
-};
+});
 
 function setOverlayCookie(cname, cvalue) {
     var d = new Date();  
