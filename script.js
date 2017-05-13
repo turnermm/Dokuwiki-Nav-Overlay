@@ -34,20 +34,25 @@ jQuery( document ).ready(function() {
 });
 
 jQuery(window).load(function() {       
+    setTimeout(ovl_setPosition,500)
+});
+function  ovl_setPosition() {       
             var pos  = overlay_getCookie('OverlayUserposition') ;
+           // if(!pos) return;
             var pos_ar, ptop, pleft;
             
             if(pos) {
                 pos_ar = pos.split('#');
                 pleft = parseInt(pos_ar[0]);
-                ptop = parseInt(pos_ar[0]);                
+                ptop = parseInt(pos_ar[1]);                
             }
             else {
                 pleft = JSINFO['ol_left'];
                 ptop = JSINFO['ol_top']
             }
-            jQuery("#overlay" ).css({top: JSINFO['ol_top'], left: JSINFO['ol_left'], position:'absolute'});     
-});
+           
+            jQuery("#overlay" ).css({top: ptop, left: pleft, position:'absolute'});     
+};
 
 function setOverlayCookie(cname, cvalue) {
     var d = new Date();  
