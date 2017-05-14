@@ -6,3 +6,5 @@ $lang['detach'] = 'Detach';
 $lang['attach'] = 'Attach';
 $lang['js']['detach'] = 'Detach';
 $lang['js']['attach'] = 'Attach';
+$lang['js']['absolute'] = 'Detach';
+$lang['js']['fixed'] = 'Attach';

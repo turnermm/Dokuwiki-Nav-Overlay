@@ -32,15 +32,16 @@ jQuery( document ).ready(function() {
     var button_text;
     if(which == 'fixed') {
         which = "absolute";  
-        button_text = LANG.plugins.overlay.detach;
+        button_text = LANG.plugins.overlay.absolute;
       }
-    else {
+    else if(which == "absolute") {
         which = 'fixed';
-        button_text = LANG.plugins.overlay.attach;
+        button_text = LANG.plugins.overlay.fixed;
         theUserposition.x = 0;
         theUserposition.y = 0;
         jQuery("#overlay" ).css({top:  theUserposition.y, left:  theUserposition.x, position:which}); 
     }  
+    else button_text = "---";
        var y = jQuery("#overlay").css('top');    
        var x = jQuery("#overlay").css('left');   
        jQuery(this).html(button_text);
@@ -82,6 +83,16 @@ jQuery(window).load(function() {
             }
             else ptype='absolute';
             
+           if(ptype == 'fixed') {        
+                button_text = LANG.plugins.overlay.fixed;
+              }
+            else if(ptype == "absolute")
+            {        
+                button_text = LANG.plugins.overlay.absolute;
+              }  
+            else    button_text = "---";      
+      //     jQuery( "a.ovl_fix_toggle" ).html(button_text + "-" + ptype);      
+           jQuery( "a.ovl_fix_toggle" ).html(button_text);      
             jQuery("#overlay" ).css({top: ptop, left: pleft, position:ptype});     
            
 });
