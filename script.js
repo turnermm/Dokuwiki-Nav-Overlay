@@ -27,13 +27,28 @@ jQuery( document ).ready(function() {
    }
  jQuery( "a.ovl_fix_toggle" ).on('click', function() {
     var which = jQuery("#overlay").css('position');    
+    var button_text;
     if(which == 'fixed') {
-        which = "absolute";    }
-    else which = 'fixed';
+        which = "absolute";  
+        button_text = LANG.plugins.overlay.detach;
+      }
+    else {
+        which = 'fixed';
+        button_text = LANG.plugins.overlay.attach;
+        theUserposition.x = 0;
+        theUserposition.y = 0;
+    }  
+       jQuery(this).html(button_text);
        jQuery("#overlay" ).css({top:  theUserposition.y, left:  theUserposition.x, position:which});     
-  // jQuery("#overlay").css('position',which);    
+       var pos = (theUserposition.x).toString() + '#' + (theUserposition.y).toString() + '#' + which;       
+       setOverlayCookie('OverlayUserposition', pos) ;
+       jQuery("#overlay").css('position',which);    
+       
  });
+ 
  jQuery(window).on('beforeunload', function(){ 
+   var which = jQuery("#overlay").css('position');    
+  
     var pos = (theUserposition.x).toString() + '#' + (theUserposition.y).toString();
     setOverlayCookie('OverlayUserposition', pos) ;
 });
@@ -41,7 +56,9 @@ jQuery( document ).ready(function() {
 
 jQuery(window).load(function() {  
             var pos  = overlay_getCookie('OverlayUserposition') ;
-            var  pos_ar, ptop=0, pleft=0, ptype='abolute';         
+            var  pos_ar, ptop=0, pleft=0;
+            var ptype='abolute';         
+        
             if(pos) {
                 pos_ar = pos.split('#');
                 pleft = parseInt(pos_ar[0]);
@@ -50,6 +67,7 @@ jQuery(window).load(function() {
              if(JSINFO['ol_left']) {                 
                 pleft = JSINFO['ol_left'];
                 ptop = JSINFO['ol_top'] ;               
+                ptype=JSINFO['position'] ;
             }
             jQuery("#overlay" ).css({top: ptop, left: pleft, position:ptype});     
            
