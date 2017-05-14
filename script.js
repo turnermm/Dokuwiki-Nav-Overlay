@@ -48,8 +48,7 @@ jQuery( document ).ready(function() {
  
  jQuery(window).on('beforeunload', function(){ 
    var which = jQuery("#overlay").css('position');    
-  
-    var pos = (theUserposition.x).toString() + '#' + (theUserposition.y).toString();
+    var pos = (theUserposition.x).toString() + '#' + (theUserposition.y).toString() + '#' + which;
     setOverlayCookie('OverlayUserposition', pos) ;
 });
 });
@@ -57,18 +56,21 @@ jQuery( document ).ready(function() {
 jQuery(window).load(function() {  
             var pos  = overlay_getCookie('OverlayUserposition') ;
             var  pos_ar, ptop=0, pleft=0;
-            var ptype='abolute';         
+            var ptype;       
         
             if(pos) {
                 pos_ar = pos.split('#');
                 pleft = parseInt(pos_ar[0]);
                 ptop = parseInt(pos_ar[1]);                
+                ptype=pos_ar[2];
             }
-             if(JSINFO['ol_left']) {                 
+            else if(JSINFO['ol_left']) {                 
                 pleft = JSINFO['ol_left'];
                 ptop = JSINFO['ol_top'] ;               
                 ptype=JSINFO['position'] ;
             }
+            else ptype='absolute';
+            
             jQuery("#overlay" ).css({top: ptop, left: pleft, position:ptype});     
            
 });
