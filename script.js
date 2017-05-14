@@ -3,7 +3,7 @@ if(JSINFO && !JSINFO['overlay']) {
       jQuery('#overlay').toggle();     
    });   
 }
- var theUserposition= {'x':0,'y':0};  
+ var theUserposition= {'x':0,'y':0,'position':'absolute'};  
 jQuery( document ).ready(function() {   
     jQuery( "#overlay" ).draggable({
         drag: function(event,ui){
@@ -15,6 +15,8 @@ jQuery( document ).ready(function() {
         var position = jQuery(this).position();
         theUserposition.y = position.top;
          theUserposition.x =position.left;
+         jQuery(this).css('left',position.left);
+         jQuery(this).css('top',position.top);
         },
     });
     if(JSINFO ) {
@@ -37,10 +39,15 @@ jQuery( document ).ready(function() {
         button_text = LANG.plugins.overlay.attach;
         theUserposition.x = 0;
         theUserposition.y = 0;
+        jQuery("#overlay" ).css({top:  theUserposition.y, left:  theUserposition.x, position:which}); 
     }  
+       var y = jQuery("#overlay").css('top');    
+       var x = jQuery("#overlay").css('left');   
        jQuery(this).html(button_text);
-       jQuery("#overlay" ).css({top:  theUserposition.y, left:  theUserposition.x, position:which});     
-       var pos = (theUserposition.x).toString() + '#' + (theUserposition.y).toString() + '#' + which;       
+       
+       var pos = x.toString() + '#' + y.toString() + '#' + which;       
+       theUserposition.x = x;
+       theUserposition.y = y;
        setOverlayCookie('OverlayUserposition', pos) ;
        jQuery("#overlay").css('position',which);    
        
@@ -48,7 +55,11 @@ jQuery( document ).ready(function() {
  
  jQuery(window).on('beforeunload', function(){ 
    var which = jQuery("#overlay").css('position');    
-    var pos = (theUserposition.x).toString() + '#' + (theUserposition.y).toString() + '#' + which;
+   var y = jQuery("#overlay").css('top');    
+   var x = jQuery("#overlay").css('left');    
+   
+    var pos =x.toString() + '#' + y.toString() + '#' + which;
+    var pos = x.toString() + '#' + y.toString() + '#' + which;
     setOverlayCookie('OverlayUserposition', pos) ;
 });
 });
