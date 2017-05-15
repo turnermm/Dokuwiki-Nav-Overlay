@@ -49,7 +49,18 @@
            if($width) {               
                $JSINFO['ol_width'] = $width ."px";
            }
-          
+         $cookie_name =  'OverlayUserposition';
+           if(isset($_COOKIE[$cookie_name])) {
+                list($left,$top,$fixed) = explode('#',COOKIE[$cookie_name]);
+                $JSINFO['ol_top'] = intval($top);
+                $JSINFO['ol_left'] = intval($left);
+                $JSINFO['position'] = intval($fixed);
+           } 
+           else {
+               $JSINFO['ol_left'] = 0;
+               $JSINFO['ol_top'] = 0;
+               $JSINFO['position'] = 'fixed';
+           }
         }
 
         function print_overlay(&$event, $param) {        
@@ -98,10 +109,14 @@
         $insert =  p_wiki_xhtml($page);  
         if(!$insert) return;
         $close = trim($this->getLang('close'));
+        $detach = trim($this->getLang('detach'));
+        $fixed = trim($this->getLang('fix_title'));
+        $action .=' <a href="javascript:void(0);"  class="ovl_fix_toggle" title ="' .$fixed .'">' . $detach. '</a>';
 $text = <<<TEXT
        <div id='overlay'><div  class = "close">$action
         <a href="javascript:jQuery('#overlay').toggle();void(0);"  rel="nofollow" title="$close">$close</a>
         </div> $insert</div>
+        
 TEXT;
           echo $text;
      
