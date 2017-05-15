@@ -29,23 +29,29 @@ jQuery( document ).ready(function() {
    }
  jQuery( "a.ovl_fix_toggle" ).on('click', function() {
     var which = jQuery("#overlay").css('position');    
-    var button_text;
+    var button_text, title_text;
+     
     if(which == 'fixed') {
         which = "absolute";  
         button_text = LANG.plugins.overlay.absolute;
+        title_text = LANG.plugins.overlay.unfix_title;
       }
     else if(which == "absolute") {
         which = 'fixed';
         button_text = LANG.plugins.overlay.fixed;
         theUserposition.x = 0;
         theUserposition.y = 0;
+        title_text = LANG.plugins.overlay.fix_title;
         jQuery("#overlay" ).css({top:  theUserposition.y, left:  theUserposition.x, position:which}); 
     }  
-    else button_text = "---";
+    else {
+        button_text =  jQuery(this).html();
+        title_text = jQuery(this).attr('title');
+    }   
        var y = jQuery("#overlay").css('top');    
        var x = jQuery("#overlay").css('left');   
        jQuery(this).html(button_text);
-       
+       jQuery(this).attr('title', title_text);   
        var pos = x.toString() + '#' + y.toString() + '#' + which;       
        theUserposition.x = x;
        theUserposition.y = y;

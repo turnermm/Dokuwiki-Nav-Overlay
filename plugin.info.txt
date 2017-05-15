@@ -1,7 +1,7 @@
 base   overlay
 author Myron Turner
 email  turnermm02@shaw.ca
-date   2015-09-27
+date   2017-05-15
 name   Dokuwiki Nav Overlay
-desc   create collapsible window into which navigation plugins can be installed
+desc   Creates independent window at the template level that can be toggled open and closed
 url    https://www.dokuwiki.org/plugin:overlay

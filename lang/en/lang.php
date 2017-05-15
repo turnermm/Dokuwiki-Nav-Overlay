@@ -1,7 +1,9 @@
 <?php
 $lang['toggle_name'] = 'Index';
 $lang['close'] = 'Close';
-$lang['fix_title'] = "Overlay tied to page or scrolls independently";
+$lang['fix_title'] = 'Enable overlay to move with page';
+$lang['js']['fix_title'] = 'Enable overlay to move with page';
+$lang['js']['unfix_title'] = 'Enable overlay to float freely';
 $lang['detach'] = 'Detach';
 $lang['attach'] = 'Attach';
 $lang['js']['detach'] = 'Detach';
