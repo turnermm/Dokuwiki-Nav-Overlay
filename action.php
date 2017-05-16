@@ -64,7 +64,7 @@
         }
 
         function print_overlay(&$event, $param) {        
-            global $ID;
+            global $ID, $INFO;
             $page = "";
             
            $tools = $this->getConf('tools');
@@ -75,6 +75,21 @@
                    $action .= tpl_action($choices[$i], true, '', 1, '<span class = "oltools-right">', '</span>', ''); 
                }    
             
+           if($INFO['userinfo']) {
+              $wiki_page = 'overlay:' . $INFO['client'];             
+               $file = wikiFN($wiki_page); 
+               if(file_exists($file) && auth_quickaclcheck('overlay:' . $INFO['client']) >= AUTH_READ) {  // check ACL for overlay page                                               
+                   $page = $wiki_page;
+               }
+               else {
+                   $wiki_page = $INFO['client'] . ':overlay';
+                   $file = wikiFN($wiki_page);                 
+                   if(file_exists($file) && auth_quickaclcheck($INFO['client'] . "overlay") >= AUTH_READ) {  // check ACL for overlay page                                                   
+                       $page = $wiki_page;
+                   }               
+               }
+           }
+           if(!$page) { 
            $namespaces = $this->getConf('nsoverlays');  // check for alternate overlay pages         
            $alternates = explode(',',$namespaces);
             
@@ -88,7 +103,7 @@
                   }
                 }
             }
-
+            }
             if(!$page) {
               foreach($alternates as $nmsp) {
                   if(strrpos($nmsp,'*')) {
