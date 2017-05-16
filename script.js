@@ -19,6 +19,11 @@ jQuery( document ).ready(function() {
          jQuery(this).css('top',position.top);
         },
     });
+    
+    if (jQuery.fn.resizable) {
+        jQuery( "#overlay" ).draggable().resizable(); 
+    }
+  
     if(JSINFO ) {
        if(JSINFO['ol_width']) {
            jQuery( "#overlay" ).css('width',JSINFO['ol_width']); 
