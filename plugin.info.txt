@@ -3,5 +3,5 @@ author Myron Turner
 email  turnermm02@shaw.ca
 date   2017-05-18
 name   Dokuwiki Nav Overlay
-desc   Creates independent window at the template level that can be toggled open and closed
+desc   Creates independent window at the template level that can be moved, toggled, resized
 url    https://www.dokuwiki.org/plugin:overlay
