@@ -24,14 +24,8 @@ jQuery( document ).ready(function() {
         jQuery( "#overlay" ).draggable().resizable(); 
     }
   
-    if(JSINFO ) {
-       if(JSINFO['ol_width']) {
-           jQuery( "#overlay" ).css('width',JSINFO['ol_width']); 
-       }    
-       if(JSINFO['ol_height']) {
-           jQuery( "#overlay" ).css('height',JSINFO['ol_height']);            
-        }
-   }
+OverlaySetSize();
+
  jQuery( "a.ovl_fix_toggle" ).on('click', function() {
     var which = jQuery("#overlay").css('position');    
     var button_text, title_text;
@@ -69,10 +63,15 @@ jQuery( document ).ready(function() {
    var which = jQuery("#overlay").css('position');    
    var y = jQuery("#overlay").css('top');    
    var x = jQuery("#overlay").css('left');    
+   var width = parseInt(jQuery("#overlay").css('width'));
+   var height = parseInt(jQuery("#overlay").css('height'));   
    
-    var pos =x.toString() + '#' + y.toString() + '#' + which;
     var pos = x.toString() + '#' + y.toString() + '#' + which;
     setOverlayCookie('OverlayUserposition', pos) ;
+    
+    var dim = height.toString() + '#' + width.toString();    
+    setOverlayCookie('OverlayUserDim',dim) ;
+      
 });
 });
 
@@ -101,12 +100,32 @@ jQuery(window).load(function() {
             {        
                 button_text = LANG.plugins.overlay.absolute;
               }  
-            else    button_text = "---";      
-      //     jQuery( "a.ovl_fix_toggle" ).html(button_text + "-" + ptype);      
+            else    button_text = "Att/Det";      
+  
            jQuery( "a.ovl_fix_toggle" ).html(button_text);      
             jQuery("#overlay" ).css({top: ptop, left: pleft, position:ptype});     
            
+           OverlaySetSize();
 });
+
+function OverlaySetSize() {
+     var dim = overlay_getCookie('OverlayUserDim') ;
+    if(JSINFO  && ! dim) {
+       if(JSINFO['ol_width']) {
+           jQuery( "#overlay" ).css('width',JSINFO['ol_width']); 
+       }    
+       if(JSINFO['ol_height']) {
+           jQuery( "#overlay" ).css('height',JSINFO['ol_height']);            
+        }
+   }
+   else if(dim) {
+        var dim_ar = dim.split('#');
+        var h = parseInt(dim_ar[0]);
+        var w = parseInt(dim_ar[1]);
+        jQuery("#overlay" ).css({'width': w, 'height': h});      
+   }
+
+}
 
 function setOverlayCookie(cname, cvalue) {
     var d = new Date();  
