@@ -4,10 +4,10 @@
   height:325px; 
   width: 300px;
   background-color:#fff;
-  //position:absolute;
+  position:relative;
   top: 0px;
   left:0px;
-  z-index:5;
+  z-index:15;
   overflow: auto; 
   border: 1px solid black; 
   font-size:11pt;
