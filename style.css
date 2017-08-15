@@ -61,3 +61,12 @@
 /* mark  settings here as !important.  For instance,  color: green !important;   */
 button.overlaytools {}
 a.overlaytools {}
+
+#dokuwiki__pagetools ul li a.ovlpagetool {
+    background-position: right 0;
+}
+
+#dokuwiki__pagetools ul li a.ovlpagetool:before {
+    content: url(overlay.png);
+    margin-top: 0;     
+}

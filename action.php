@@ -143,7 +143,11 @@ TEXT;
         $type = $this->getConf('menutype');
         if($type !=$param[0]) return;
         $name = $this->getLang('toggle_name');
-        $event->data['items']['overlay'] = '<li><a href="javascript:jQuery(\'#overlay\').toggle();void(0);"  rel="nofollow"   title="' .$name. '">'. $name.'</a></li>';
+        $display = $name;
+        if($type == 'page') {
+            $display = "";
+        }
+        $event->data['items']['overlay'] = '<li><a href="javascript:jQuery(\'#overlay\').toggle();void(0);" class="ovlpagetool"  rel="nofollow"   title="' .$name. '">'. $display .'</a></li>';
 
     }        
   function overlay_tools(&$event, $param) {
