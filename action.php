@@ -15,7 +15,8 @@
            $controller->register_hook('TEMPLATE_PAGETOOLS_DISPLAY', 'BEFORE', $this, 'action_link', array('page'));    
            $controller->register_hook('TEMPLATE_SITETOOLS_DISPLAY', 'BEFORE', $this, 'action_link', array('site'));    
            $controller->register_hook('TEMPLATE_USERTOOLS_DISPLAY', 'BEFORE', $this, 'action_link', array('user'));    
-            $controller->register_hook('TEMPLATE_OVLTOOLS_DISPLAY', 'BEFORE', $this, 'overlay_tools', array('user'));
+           $controller->register_hook('TEMPLATE_OVLTOOLS_DISPLAY', 'BEFORE', $this, 'overlay_tools', array('user'));
+           $controller->register_hook('MENU_ITEMS_ASSEMBLY', 'AFTER', $this, 'addsvgbutton', array());
         }
         
         function set_admin(&$event, $param) {
@@ -149,15 +150,37 @@ TEXT;
         }
         $event->data['items']['overlay'] = '<li><a href="javascript:jQuery(\'#overlay\').toggle();void(0);" class="ovlpagetool"  rel="nofollow"   title="' .$name. '">'. $display .'</a></li>';
 
-    }        
-  function overlay_tools(&$event, $param) {
+    }    
+    public function addsvgbutton(Doku_Event $event) {      
+             /* if this is not a page OR ckgedit/ckgedoku is not  active -> return */    
+//msg($event->data['view']);       
+if($event->data['view'] == 'any') {
+   $this->overlay_tools($event, array('any'));
+  
+}      
+       $type = $this->getConf('menutype');    
+       if($event->data['view'] != $type ) return;             
+       $btn = $this->getLang('toggle_name');
     
+       if(!$btn) $btn = 'Overlay';           
+       array_splice($event->data['items'], -1, 0, [new \dokuwiki\plugin\overlay\MenuItem($btn)]);
+}    
+
+  function overlay_tools(&$event, $param) {    
     $name = $this->getLang('toggle_name');
     $type = $this->getConf('toggletype');
      if($type == 'link') {
+         if($param[0] == 'any') {
+             echo  '<a href="javascript:jQuery(\'#overlay\').toggle();void(0);"  class="overlaytools" rel="nofollow"   title="' .$name. '">'. $name.'</a>';
+             return;
+         }
           $event->data['items']['overlay'] = '<a href="javascript:jQuery(\'#overlay\').toggle();void(0);"  class="overlaytools" rel="nofollow"   title="' .$name. '">'. $name.'</a>';
         }
         elseif($type == 'button') {
+            if($param[0] == 'any') {
+                  echo '<button class="overlaytools" onclick="jQuery(\'#overlay\').toggle();void(0);">Index</button>';
+                  return;
+            }
           $event->data['items']['overlay'] = '<button class="overlaytools" onclick="jQuery(\'#overlay\').toggle();void(0);">Index</button>';
         }  
    }  
