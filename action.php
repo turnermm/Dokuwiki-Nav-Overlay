@@ -152,7 +152,12 @@ TEXT;
 
     }    
     public function addsvgbutton(Doku_Event $event) {      
-             /* if this is not a page OR ckgedit/ckgedoku is not  active -> return */       
+             /* if this is not a page OR ckgedit/ckgedoku is not  active -> return */    
+//msg($event->data['view']);       
+if($event->data['view'] == 'any') {
+   $this->overlay_tools($event, array('any'));
+  
+}      
        $type = $this->getConf('menutype');    
        if($event->data['view'] != $type ) return;             
        $btn = $this->getLang('toggle_name');
@@ -165,9 +170,17 @@ TEXT;
     $name = $this->getLang('toggle_name');
     $type = $this->getConf('toggletype');
      if($type == 'link') {
+         if($param[0] == 'any') {
+             echo  '<a href="javascript:jQuery(\'#overlay\').toggle();void(0);"  class="overlaytools" rel="nofollow"   title="' .$name. '">'. $name.'</a>';
+             return;
+         }
           $event->data['items']['overlay'] = '<a href="javascript:jQuery(\'#overlay\').toggle();void(0);"  class="overlaytools" rel="nofollow"   title="' .$name. '">'. $name.'</a>';
         }
         elseif($type == 'button') {
+            if($param[0] == 'any') {
+                  echo '<button class="overlaytools" onclick="jQuery(\'#overlay\').toggle();void(0);">Index</button>';
+                  return;
+            }
           $event->data['items']['overlay'] = '<button class="overlaytools" onclick="jQuery(\'#overlay\').toggle();void(0);">Index</button>';
         }  
    }  
