@@ -18,8 +18,9 @@ class MenuItem extends AbstractItem {
     private  $btn_name;
 
     /** @var string icon file */  
-     protected $svg = __DIR__ . '/screen-frame.svg';   //Icon source : https://www.flaticon.com/ license: http://creativecommons.org/licenses/by/3.0
-     
+   //  protected $svg = __DIR__ . '/multiple-outline.svg';
+     protected $svg = __DIR__ . '/multiple-blank.svg';
+  
     /**
      * MenuItem constructor.
      * @param string $btn_name (can be passed in from the  event handler)
