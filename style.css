@@ -80,22 +80,5 @@ a.overlaytools {}
     background-position: right -45px;
 }
 
-/* oltool icon */
-#dokuwiki__pagetools ul li a.oltool {
-    background-position: right 0;
-}
-#dokuwiki__pagetools ul li a.oltool:before {
-    content: url(ovl_sprite.png);
-    margin-top: 0;
-}
-#dokuwiki__pagetools:hover ul li a.oltool,
-#dokuwiki__pagetools ul li a.oltool:focus,
-#dokuwiki__pagetools ul li a.oltool:active {
-    background-image: url(ovl_sprite.png);
-}
-#dokuwiki__pagetools ul li a.oltool:hover,
-#dokuwiki__pagetools ul li a.oltool:active,
-#dokuwiki__pagetools ul li a.oltool:focus {
-    background-position: right -45px;
-}
+
 

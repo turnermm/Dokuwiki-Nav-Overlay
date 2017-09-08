@@ -148,20 +148,20 @@ TEXT;
         if($type == 'page') {
             $display = "Index";
         }
-
+  
           if ($INFO['perm'] > AUTH_READ) {
-            $title = 'Our index';
-            $name = 'Overlay Index';
+            $title = 'New  index';
+            $name = 'New Overlay Index';
             $edclass = 'ovlpagetool';
         }
         else {
-            $title = 'Their Index';
-            $name = 'Overlay Index';
+            $title = 'New Index';
+            $name = 'New Overlay Index';
             $edclass = 'oltool';
         }
         $title = $display;
-        $link = '<a href="' . wl($ID, $params) . '" class="action ' . $edclass . '" rel="nofollow" title="' . $title . '"><span>' . $name . '</span></a>';
-
+      
+         $link = '<a href="javascript:jQuery(\'#overlay\').toggle();void(0);" class="ovlpagetool"  rel="nofollow"   title="' .$title. '"><span>'. $name .'</span></a>';
         if($param[0] == 'page') {
             $link = '<li class = "dwedit">' . $link .'</li>';
         }
