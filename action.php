@@ -143,42 +143,27 @@ TEXT;
         if (auth_quickaclcheck($ID) < AUTH_READ) return;     //no access to page, suppress index link
         $type = $this->getConf('menutype');
         if($type !=$param[0]) return;
-        $name = $this->getLang('toggle_name');
-        $display = $name;
-        if($type == 'page') {
-            $display = "Index";
-        }
-  
-          if ($INFO['perm'] > AUTH_READ) {
-            $title = 'New  index';
-            $name = 'New Overlay Index';
-            $edclass = 'ovlpagetool';
-        }
-        else {
-            $title = 'New Index';
-            $name = 'New Overlay Index';
-            $edclass = 'oltool';
-        }
-        $title = $display;
+        $name = $this->getLang('toggle_name');         
+        $edclass = 'ovl' . $type .'tool';
+         $title = $name;
       
-         $link = '<a href="javascript:jQuery(\'#overlay\').toggle();void(0);" class="ovlpagetool"  rel="nofollow"   title="' .$title. '"><span>'. $name .'</span></a>';
+         $link = '<a href="javascript:jQuery(\'#overlay\').toggle();void(0);" class="' . $edclass . '"  rel="nofollow"   title="' .$title. '"><span>'. $name .'</span></a>';
         if($param[0] == 'page') {
             $link = '<li class = "dwedit">' . $link .'</li>';
         }
         else { 
-            $link = '<span class = "dwedit">' . $link  .'</span>';          
+            $link = '<span class = "ovltitle">' . $link  .'</span>';          
         }
 
     $event->data['items'] = array_slice($event->data['items'], 0, 1, true) +
             array('overlay' => $link) + array_slice($event->data['items'], 1, NULL, true);
     }    
     public function addsvgbutton(Doku_Event $event) {      
-             /* if this is not a page OR ckgedit/ckgedoku is not  active -> return */    
-//msg($event->data['view']);       
-if($event->data['view'] == 'any') {
-   $this->overlay_tools($event, array('any'));
-  
-}      
+   
+        if($event->data['view'] == 'any') {
+           $this->overlay_tools($event, array('any'));  
+          return;           
+        }      
        $type = $this->getConf('menutype');    
        if($event->data['view'] != $type ) return;             
        $btn = $this->getLang('toggle_name');
