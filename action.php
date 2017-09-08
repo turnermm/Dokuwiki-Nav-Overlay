@@ -146,10 +146,31 @@ TEXT;
         $name = $this->getLang('toggle_name');
         $display = $name;
         if($type == 'page') {
-            $display = "";
+            $display = "Index";
         }
-        $event->data['items']['overlay'] = '<li><a href="javascript:jQuery(\'#overlay\').toggle();void(0);" class="ovlpagetool"  rel="nofollow"   title="' .$name. '">'. $display .'</a></li>';
 
+          if ($INFO['perm'] > AUTH_READ) {
+            $title = 'Our index';
+            $name = 'Overlay Index';
+            $edclass = 'ovlpagetool';
+        }
+        else {
+            $title = 'Their Index';
+            $name = 'Overlay Index';
+            $edclass = 'oltool';
+        }
+        $title = $display;
+        $link = '<a href="' . wl($ID, $params) . '" class="action ' . $edclass . '" rel="nofollow" title="' . $title . '"><span>' . $name . '</span></a>';
+
+        if($param[0] == 'page') {
+            $link = '<li class = "dwedit">' . $link .'</li>';
+        }
+        else { 
+            $link = '<span class = "dwedit">' . $link  .'</span>';          
+        }
+
+    $event->data['items'] = array_slice($event->data['items'], 0, 1, true) +
+            array('overlay' => $link) + array_slice($event->data['items'], 1, NULL, true);
     }    
     public function addsvgbutton(Doku_Event $event) {      
              /* if this is not a page OR ckgedit/ckgedoku is not  active -> return */    

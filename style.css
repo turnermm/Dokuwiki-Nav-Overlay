@@ -65,8 +65,37 @@ a.overlaytools {}
 #dokuwiki__pagetools ul li a.ovlpagetool {
     background-position: right 0;
 }
-
 #dokuwiki__pagetools ul li a.ovlpagetool:before {
-    content: url(overlay.png);
-    margin-top: 0;     
+    content: url(ovl_sprite.png);
+    margin-top: 0;
 }
+#dokuwiki__pagetools:hover ul li a.ovlpagetool,
+#dokuwiki__pagetools ul li a.ovlpagetool:focus,
+#dokuwiki__pagetools ul li a.ovlpagetool:active {
+    background-image: url(ovl_sprite.png);
+}
+#dokuwiki__pagetools ul li a.ovlpagetool:hover,
+#dokuwiki__pagetools ul li a.ovlpagetool:active,
+#dokuwiki__pagetools ul li a.ovlpagetool:focus {
+    background-position: right -45px;
+}
+
+/* oltool icon */
+#dokuwiki__pagetools ul li a.oltool {
+    background-position: right 0;
+}
+#dokuwiki__pagetools ul li a.oltool:before {
+    content: url(ovl_sprite.png);
+    margin-top: 0;
+}
+#dokuwiki__pagetools:hover ul li a.oltool,
+#dokuwiki__pagetools ul li a.oltool:focus,
+#dokuwiki__pagetools ul li a.oltool:active {
+    background-image: url(ovl_sprite.png);
+}
+#dokuwiki__pagetools ul li a.oltool:hover,
+#dokuwiki__pagetools ul li a.oltool:active,
+#dokuwiki__pagetools ul li a.oltool:focus {
+    background-position: right -45px;
+}
+
