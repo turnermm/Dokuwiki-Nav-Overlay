@@ -1,7 +1,7 @@
 base   overlay
 author Myron Turner
 email  turnermm02@shaw.ca
-date   2017-09-10
+date   2017-09-17
 name   Dokuwiki Nav Overlay
 desc   Creates independent window at the template level that can be moved, toggled, resized
 url    https://www.dokuwiki.org/plugin:overlay
