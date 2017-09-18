@@ -64,8 +64,9 @@ OverlaySetSize();
    var y = jQuery("#overlay").css('top');    
    var x = jQuery("#overlay").css('left');    
    var width = parseInt(jQuery("#overlay").css('width'));
+   if(width < 200) width = 200;
    var height = parseInt(jQuery("#overlay").css('height'));   
-   
+   if(height < 200) height = 200;   
     var pos = x.toString() + '#' + y.toString() + '#' + which;
     setOverlayCookie('OverlayUserposition', pos) ;
     
@@ -122,6 +123,7 @@ function OverlaySetSize() {
         var dim_ar = dim.split('#');
         var h = parseInt(dim_ar[0]);
         var w = parseInt(dim_ar[1]);
+        if(w < 200) w = 200;
         jQuery("#overlay" ).css({'width': w, 'height': h});      
    }
 
