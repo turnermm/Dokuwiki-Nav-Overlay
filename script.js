@@ -101,7 +101,12 @@ jQuery(window).load(function() {
             {        
                 button_text = LANG.plugins.overlay.absolute;
               }  
-            else    button_text = "Att/Det";      
+           else  {              
+               button_text = LANG.plugins.overlay.fixed;
+               ptop = 0;
+               pleft = 0;
+               ptype = 'fixed';   
+            }
   
            jQuery( "a.ovl_fix_toggle" ).html(button_text);      
             jQuery("#overlay" ).css({top: ptop, left: pleft, position:ptype});     
