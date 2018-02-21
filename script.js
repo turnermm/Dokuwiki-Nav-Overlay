@@ -34,6 +34,7 @@ OverlaySetSize();
         which = "absolute";  
         button_text = LANG.plugins.overlay.absolute;
         title_text = LANG.plugins.overlay.unfix_title;
+		jQuery("#overlay" ).resizable( "option", "handles", false );
       }
     else if(which == "absolute") {
         which = 'fixed';
@@ -42,6 +43,7 @@ OverlaySetSize();
         theUserposition.y = 0;
         title_text = LANG.plugins.overlay.fix_title;
         jQuery("#overlay" ).css({top:  theUserposition.y, left:  theUserposition.x, position:which}); 
+         jQuery("#overlay" ).resizable( "option", "handles", "n, e, s, w" );
     }  
     else {
         button_text =  jQuery(this).html();
