@@ -21,7 +21,10 @@ jQuery( document ).ready(function() {
     });
     
     if (jQuery.fn.resizable) {
-        jQuery( "#overlay" ).draggable().resizable(); 
+        jQuery( "#overlay" ).draggable().resizable({
+              autoHide: true           
+          }
+       ); 
     }
   
 OverlaySetSize();
