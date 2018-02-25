@@ -13,9 +13,6 @@ jQuery( document ).ready(function() {
         theUserposition.y = position.top;
          theUserposition.x =position.left;
         }, 
-        start: function(){
-            
-        },
         stop: function(){
         var position = jQuery(this).position();
         theUserposition.y = position.top;
