@@ -5,12 +5,17 @@ if(JSINFO && !JSINFO['overlay']) {
 }
  var theUserposition= {'x':0,'y':0,'position':'absolute'};  
 jQuery( document ).ready(function() {   
+    jQuery('.ui-resizable-se' ).css('position','sticky');
+    jQuery('.ui-resizable-se' ).css('top','300');
     jQuery( "#overlay" ).draggable({
         drag: function(event,ui){
         var position = jQuery(this).position();
         theUserposition.y = position.top;
          theUserposition.x =position.left;
         }, 
+        start: function(){
+            
+        },
         stop: function(){
         var position = jQuery(this).position();
         theUserposition.y = position.top;
