@@ -5,8 +5,6 @@ if(JSINFO && !JSINFO['overlay']) {
 }
  var theUserposition= {'x':0,'y':0,'position':'absolute'};  
 jQuery( document ).ready(function() {   
-    jQuery('.ui-resizable-se' ).css('position','sticky');
-    jQuery('.ui-resizable-se' ).css('top','300');
     jQuery( "#overlay" ).draggable({
         drag: function(event,ui){
         var position = jQuery(this).position();
@@ -24,7 +22,9 @@ jQuery( document ).ready(function() {
     
     if (jQuery.fn.resizable) {
         jQuery( "#overlay" ).draggable().resizable({
-              autoHide: true           
+             autoHide: true,
+			 grid: 50,
+             helper: "ui-resizable-helper"			 
           }
        ); 
     }
