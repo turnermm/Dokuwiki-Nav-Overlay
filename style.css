@@ -31,7 +31,9 @@
     position: absolute;
     bottom: 0;
 }  
-
+#overlay div.ovl-insert {
+    padding: 4px;
+}
 #overlay div.close a { 
    padding-left: 4px; 
  }
@@ -89,4 +91,40 @@ span.ovltitle {
   padding-left: 4px;
   margin-left:6px; margin-right:4px;
  }
+
+ #nwgrip, #negrip, #swgrip, #segrip, #ngrip, #egrip, #wgrip {
+    width: 10px;
+    height: 10px;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+}
+#nwgrip {
+    left: -4px;
+    top: -4px;
+}
+#negrip{
+     top: -4px;
+     right: -4px;
+}
+#swgrip{
+    bottom: -3px;
+    left: -3px;
+}
+#segrip{
+     bottom: -3px;
+    right:-3px;
+}
+#ngrip{
+     top: -4px;
+    left:50%;
+}
+#wgrip{
+     left:-5px;
+     top:50%;
+}
+#egrip{
+     right:-5px;
+     top:50%;
+}
+
 

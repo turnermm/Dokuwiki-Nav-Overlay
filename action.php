@@ -120,11 +120,20 @@
         $close = trim($this->getLang('close'));
         $detach = trim($this->getLang('detach'));
         $fixed = trim($this->getLang('fix_title'));
+        $resize = trim($this->getLang('resize'));
         $action .=' <a href="javascript:void(0);"  class="ovl_fix_toggle" title ="' .$fixed .'">' . $detach. '</a>';
 $text = <<<TEXT
-       <div id='overlay'><div  class = "close">$action
+       <div id='overlay'>
+        <div class="ui-resizable-handle ui-resizable-nw" id="nwgrip" title="$resize"></div>
+        <div class="ui-resizable-handle ui-resizable-ne" id="negrip" title="$resize"></div>
+        <div class="ui-resizable-handle ui-resizable-sw" id="swgrip" title="$resize"></div>
+        <div class="ui-resizable-handle ui-resizable-se" id="segrip" title="$resize"></div>
+        <div class="ui-resizable-handle ui-resizable-n" id="ngrip" title="$resize"></div>
+        <div class="ui-resizable-handle ui-resizable-e" id="egrip" title="$resize"></div>
+        <div class="ui-resizable-handle ui-resizable-w" id="wgrip" title="$resize"></div>       
+       <div  class = "close">$action
         <a href="javascript:jQuery('#overlay').toggle();void(0);"  rel="nofollow" title="$close">$close</a>
-        </div> $insert</div>
+        </div><div class="ovl-insert">$insert</div></div>
         
 TEXT;
           echo $text;
