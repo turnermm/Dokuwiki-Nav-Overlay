@@ -23,7 +23,7 @@ jQuery( document ).ready(function() {
     if (jQuery.fn.resizable) {
         jQuery( "#overlay" ).draggable().resizable({
              autoHide: true,
-			 grid: 50,
+	      grid: 50,
              helper: "ui-resizable-helper"			 
           }
        ); 
