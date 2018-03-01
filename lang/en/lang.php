@@ -10,3 +10,4 @@ $lang['js']['detach'] = 'Detach';
 $lang['js']['attach'] = 'Attach';
 $lang['js']['absolute'] = 'Detach';
 $lang['js']['fixed'] = 'Attach';
+$lang['resize'] = 'Resize';

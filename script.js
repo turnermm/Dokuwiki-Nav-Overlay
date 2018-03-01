@@ -22,9 +22,16 @@ jQuery( document ).ready(function() {
     
     if (jQuery.fn.resizable) {
         jQuery( "#overlay" ).draggable().resizable({
-             autoHide: true,
-	      grid: 50,
-             helper: "ui-resizable-helper"			 
+            helper: "ui-resizable-helper",	
+            handles: {
+                    'nw': '#nwgrip',
+                    'ne': '#negrip',
+                    'sw': '#swgrip',
+                    'se': '#segrip',
+                    'n': '#ngrip',
+                    'e': '#egrip', 
+                    'w': '#wgrip'
+                }        
           }
        ); 
     }
