@@ -17,6 +17,16 @@
            $controller->register_hook('TEMPLATE_USERTOOLS_DISPLAY', 'BEFORE', $this, 'action_link', array('user'));    
            $controller->register_hook('TEMPLATE_OVLTOOLS_DISPLAY', 'BEFORE', $this, 'overlay_tools', array('user'));
            $controller->register_hook('MENU_ITEMS_ASSEMBLY', 'AFTER', $this, 'addsvgbutton', array());
+         //  $controller->register_hook('', 'AFTER', $this, 'addsvgbutton', array());
+            $controller->register_hook('TPL_METAHEADER_OUTPUT', 'BEFORE', $this, 'get_scripts', array());            
+        }
+        
+        function get_scripts(Doku_Event $event, $param) {  
+             $event->data["script"][] = array (
+               "type" => "text/javascript",
+                "src" => DOKU_BASE."lib/plugins/overlay/script/jquery-ui-touch-punch-cmpr.js",
+             "_data" => "",
+             );
         }
         
         function set_admin(&$event, $param) {
