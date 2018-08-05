@@ -1,6 +1,7 @@
 if(JSINFO && !JSINFO['overlay']) {  
     jQuery( document ).ready(function() {   
       jQuery('#overlay').toggle();     
+      jQuery('#widget').draggable();
    });   
 }
  var theUserposition= {'x':0,'y':0,'position':'absolute'};  
