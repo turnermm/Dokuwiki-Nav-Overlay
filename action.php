@@ -26,7 +26,7 @@
                "type" => "text/javascript",
                 "src" => DOKU_BASE."lib/plugins/overlay/script/jquery-ui-touch-punch-cmpr.js",
              "_data" => "",
-             );
+             ) + ([ 'defer' => 'defer']);
         }
         
         function set_admin(&$event, $param) {

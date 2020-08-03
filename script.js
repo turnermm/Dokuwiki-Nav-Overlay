@@ -89,7 +89,7 @@ OverlaySetSize();
 });
 });
 
-jQuery(window).load(function() {  
+jQuery(window).on("load", function(){                    
             var pos  = overlay_getCookie('OverlayUserposition') ;
             var  pos_ar, ptop=0, pleft=0;
             var ptype;       
